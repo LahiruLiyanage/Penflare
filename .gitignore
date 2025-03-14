@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
+.pnp.js
+.yarn/install-state.gz
 /node_modules
 /.pnp
 .pnp.*
@@ -13,12 +15,11 @@
 # testing
 /coverage
 
-# next.js
+# Next.js
 /.next/
 /out/
-
-# production
 /build
+.next
 
 # misc
 .DS_Store
@@ -30,8 +31,19 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Environment Variables
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
 
 # vercel
 .vercel
@@ -39,3 +51,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
+
+# Maven (if using)
+target/
+
+# Local Netlify folder
+.netlify
+
+# Cache
+.swc/
