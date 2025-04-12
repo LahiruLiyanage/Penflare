@@ -14,10 +14,10 @@ export default function Page() {
         <ul style={{ listStyleType: "square" }}>
           <li>
 
-            <span>Email: <a href="mailto:contact@example.com">contact@example.com</a></span>
+            <span>Email: <a href="mailto:lhlahiru95@gmail.com">lhlahiru95@gmail.com</a></span>
           </li>
           <li>
-            <span>Website: <a href="https://www.example.com">www.example.com</a></span>
+            <span>Website: <a href="https://www.lahiruliyanage.com">www.lahiruliyanage.com</a></span>
           </li>
         </ul>
 

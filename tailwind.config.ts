@@ -23,7 +23,7 @@ const config: Config = {
         'h2': { fontSize: theme('fontSize.xl') },
         'h3': { fontSize: theme('fontSize.lg') },
       })
-    })
+    }),
   ],
 };
 export default config;
