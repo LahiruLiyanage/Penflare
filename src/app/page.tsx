@@ -20,7 +20,7 @@ export default function Home() {
                 src="/image-desktop.jpeg"
                 width={1000}
                 height={760}
-                className="hidden md:block z-10"
+                className="hidden rounded-lg md:block z-10"
                 alt="Screenshots of the dashboard project showing desktop version"
             />
             <Image
