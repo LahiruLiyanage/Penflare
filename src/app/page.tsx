@@ -8,7 +8,7 @@ export default function Home() {
           <div className="flex flex-col justify-center">
             <h1 className={`text-4xl text-sky-600 font-bold mb-4 {/*${styles.text_sky}*/}`}>Welcome to Penflare</h1>
             <p className="text-lg text-gray-700 mb-4">
-              Massa urna magnis dignissim id euismod porttitor vitae etiam viverra nunc at adipiscing sit morbi aliquet mauris porttitor nisi, senectus pharetra, ac porttitor orci.
+              Your space to read, write, and share articles on topics that inspire. Discover insightful content or publish your own with ease.
             </p>
             <a href="/blog/posts" className={`outline outline-offset-2 border-sky-600 text-sky-600 hover:text-white py-2 px-4 rounded hover:bg-sky-600 md:w-auto ${styles.fit_contact}`}>
               Go to Blog
