@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from '@/app/ui/styles/home.module.css';
 
 export default function Home() {
@@ -13,6 +14,22 @@ export default function Home() {
             <a href="/blog/posts" className={`outline outline-offset-2 border-sky-600 text-sky-600 hover:text-white py-2 px-4 rounded hover:bg-sky-600 md:w-auto ${styles.fit_contact}`}>
               Go to Blog
             </a>
+          </div>
+          <div  className="relative flex justify-center items-center">
+            <Image
+                src="/image-desktop.jpeg"
+                width={1000}
+                height={760}
+                className="hidden md:block z-10"
+                alt="Screenshots of the dashboard project showing desktop version"
+            />
+            <Image
+                src="/image-mobile.jpeg"
+                width={560}
+                height={620}
+                className="block rounded-md md:hidden"
+                alt="Screenshot of the dashboard project showing mobile version"
+            />
           </div>
         </div>
       </div>
