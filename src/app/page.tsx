@@ -15,7 +15,7 @@ export default function Home() {
               Go to Blog
             </a>
           </div>
-          <div  className="relative flex justify-center items-center">
+          <div className="mt-2 md:mt-0 relative flex justify-center items-center">
             <Image
                 src="/image-desktop.jpeg"
                 width={1000}
