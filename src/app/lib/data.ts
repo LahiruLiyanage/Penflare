@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import {createClient} from "@vercel/postgres";
+import {createClient, sql} from "@vercel/postgres";
 
 export async function connectToDB() {
     const client = createClient();
@@ -13,4 +13,15 @@ export async function connectToDB() {
     } catch (error) {
         console.error('Error connecting to DB', error);
     }
+}
+
+export async function getPosts() {
+    try {
+        const data = await sql`SELECT * FROM posts`
+        // console.log(data.rows)
+        return data.rows;    
+    } catch (error) {
+        console.log('Error getting posts', error)
+    }
+    
 }
