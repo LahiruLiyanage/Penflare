@@ -7,6 +7,7 @@ import {Button} from "@/app/ui/components/button";
 export default async function Page() {
     const client = await connectToDB();
     const posts = await getPosts();
+    
     return (
         <>
             {client && <p className={'text-green-500'}>Connected to DB</p> }
