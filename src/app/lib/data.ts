@@ -1,5 +1,7 @@
 import { neon } from '@neondatabase/serverless';
-import {createClient, sql} from "@vercel/postgres";
+import { createClient } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
+import { sql } from '@vercel/postgres';
 
 export async function connectToDB() {
     const client = createClient();
@@ -17,11 +19,11 @@ export async function connectToDB() {
 
 export async function getPosts() {
     try {
+        noStore(); // To Enable dynamic rendering (Default behaviour is static rendering with cashing)
         const data = await sql`SELECT * FROM posts`
-        // console.log(data.rows)
-        return data.rows;    
+        console.log(data.rows)
+        return data.rows;
     } catch (error) {
-        console.log('Error getting posts', error)
+        console.error('Error getting posts', error);
     }
-    
 }
