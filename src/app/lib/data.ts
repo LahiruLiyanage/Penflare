@@ -20,6 +20,7 @@ export async function connectToDB() {
 export async function getPosts() {
     try {
         noStore(); // To Enable dynamic rendering (Default behaviour is static rendering with cashing)
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         const data = await sql`SELECT * FROM posts`
         console.log(data.rows)
         return data.rows;
