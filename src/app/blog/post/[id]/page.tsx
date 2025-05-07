@@ -1,12 +1,19 @@
-import { posts } from '@/app/lib/placeholder-data';
+import { notFound } from "next/navigation";
+// import { posts } from '@/app/lib/placeholder-data';
 import Post from '@/app/ui/components/posts/Post';
+import { connectToDB, getPosts } from "@/app/lib/data";
 
 type PageParams = {
     id: string;
 };
 
 export default async function Page({ params }: { params: PageParams }) {
-    const post = posts.find((post) => post.id === params.id);
+    const posts = await getPosts();
+    const post = posts?.find((post) => post.id === params.id);
+
+    if (!post) {
+        notFound();
+    }
 
     return (
         <>
