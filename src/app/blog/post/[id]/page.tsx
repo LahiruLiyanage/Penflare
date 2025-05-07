@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 // import { posts } from '@/app/lib/placeholder-data';
 import Post from '@/app/ui/components/posts/Post';
-import { connectToDB, getPosts } from "@/app/lib/data";
+import { getPosts } from "@/app/lib/data";
 
 type PageParams = {
     id: string;
