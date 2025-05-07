@@ -9,8 +9,16 @@ type PageParams = {
 
 export default async function Page({ params }: { params: PageParams }) {
     const posts = await getPosts();
-    const post = posts?.find((post) => post.id === params.id);
 
+    // Handle the case where posts is undefined
+    if (!posts) {
+        notFound();
+    }
+
+    // Find the post by ID
+    const post = posts.find((post) => post.id === params.id);
+
+    // If post not found, show 404
     if (!post) {
         notFound();
     }
@@ -18,7 +26,12 @@ export default async function Page({ params }: { params: PageParams }) {
     return (
         <>
             <h1 className="text-sky-700">Post</h1>
-            {post && <Post {...post} />}
+            <Post
+                id={post.id}
+                title={post.title}
+                content={post.content}
+                date={post.date}
+            />
         </>
     );
 }
