@@ -4,7 +4,7 @@
 
 PenFlare is a sleek, high-performance article publishing application that enables content creators to easily share their thoughts with the world. Built with Next.js and TypeScript, powered by PostgreSQL on Neon's serverless database platform, and styled with TailwindCSS, PenFlare delivers a seamless writing and reading experience.
 
-Try it out: [PenFlare App](https://your-penflare-app.vercel.app)
+Try it out: [PenFlare App](https://penflare.vercel.app/)
 
 ## ✨ Features
 
@@ -29,7 +29,7 @@ Try it out: [PenFlare App](https://your-penflare-app.vercel.app)
 
 ### Development Tools
 - **Git & GitHub** – Version control and collaborative development
-- **npm/yarn** – Package management
+- **pnpm/yarn** – Package management
 - **ESLint & Prettier** – Code quality and formatting
 
 ## 📸 Screenshots
@@ -62,7 +62,7 @@ Try it out: [PenFlare App](https://your-penflare-app.vercel.app)
 4. **Engage with Community** – Comment on articles and follow your favorite authors
 5. **Manage Your Content** – Edit or delete your published articles
 
-### Technical Implementation
+### 💻 Technical Implementation
 - **App Router** – Leverages Next.js 13+ App Router for improved routing and layouts
 - **Server Components** – Utilizes React Server Components for optimized rendering
 - **API Routes** – RESTful API endpoints for client-server communication
@@ -199,7 +199,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENCE.txt) file for details.
 
 ## 📧 Contact
 
