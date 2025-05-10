@@ -1,9 +1,9 @@
 'use client';
 
-import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { PenLine, BookOpen, Share2, ChevronDown, X, Menu, ArrowRight, Feather } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -11,19 +11,16 @@ export default function Home() {
   const [activeFeature, setActiveFeature] = useState(0);
   const { scrollY } = useScroll();
 
-  // Scroll states for sub-header visibility and parallax effects
   const showSubHeader = useTransform(scrollY, [100, 200], [0, 1]);
   const heroY = useTransform(scrollY, [0, 300], [0, 100]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
 
-  // Animations and component configurations
   const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
   const staggerChildren = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
-  // Data arrays
   const features = [
     {
       icon: <PenLine className="text-sky-500" size={24} />,
@@ -51,12 +48,10 @@ export default function Home() {
   useEffect(() => {
     setIsLoaded(true);
 
-    // Feature rotation interval
     const featureInterval = setInterval(() => {
       setActiveFeature((prev) => (prev + 1) % features.length);
     }, 5000);
 
-    // Handle body scroll lock when menu is open
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
 
     return () => {
@@ -71,7 +66,6 @@ export default function Home() {
 
   return (
       <div className="min-h-screen overflow-x-hidden font-sans">
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
               <motion.div
@@ -96,30 +90,34 @@ export default function Home() {
                     variants={staggerChildren}
                 >
                   {[{ href: "/", label: "Home" }, ...navItems].map((item, i) => (
-                      <motion.a
-                          key={i}
-                          href={item.href}
-                          className="text-white text-2xl font-medium hover:text-sky-200 transition-colors"
-                          variants={fadeIn}
-                          whileHover={{ x: 5 }}
-                      >
-                        {item.label}
-                      </motion.a>
+                      <motion.div key={i} variants={fadeIn} whileHover={{ x: 5 }}>
+                        <Link
+                            href={item.href}
+                            className="text-white text-2xl font-medium hover:text-sky-200 transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.div>
                   ))}
-                  <motion.a
-                      href="/blog/post/insert"
-                      className="bg-white text-sky-800 py-3 px-8 rounded-full font-medium flex items-center justify-center mt-4"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                  >
-                    Start Writing <ArrowRight className="ml-2" size={18} />
-                  </motion.a>
+                  <motion.div variants={fadeIn}>
+                    <Link
+                        href="/blog/post/insert"
+                        className="bg-white text-sky-800 py-3 px-8 rounded-full font-medium flex items-center justify-center mt-4"
+                    >
+                      <motion.span
+                          className="flex items-center"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                      >
+                        Start Writing <ArrowRight className="ml-2" size={18} />
+                      </motion.span>
+                    </Link>
+                  </motion.div>
                 </motion.nav>
               </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Main Header */}
         <header className="fixed top-0 left-0 right-0 z-40 bg-white bg-opacity-95 shadow-sm">
           <motion.div
               className="container mx-auto px-4"
@@ -128,31 +126,31 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.5 }}
           >
             <div className="flex justify-between items-center py-4">
-              <motion.a href="/" className="flex items-center" whileHover={{ scale: 1.05 }}>
-                <Feather className="text-sky-600 mr-2" size={24} />
-                <span className="text-sky-700 text-xl font-bold">Penflare</span>
-              </motion.a>
+              <motion.div whileHover={{ scale: 1.05 }}>
+                <Link href="/" className="flex items-center">
+                  <Feather className="text-sky-600 mr-2" size={24} />
+                  <span className="text-sky-700 text-xl font-bold">Penflare</span>
+                </Link>
+              </motion.div>
 
-              {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
                 <nav className="flex items-center space-x-6">
                   {navItems.map((item, i) => (
-                      <a key={i} href={item.href} className="text-gray-700 hover:text-sky-600 transition-colors">
+                      <Link key={i} href={item.href} className="text-gray-700 hover:text-sky-600 transition-colors">
                         {item.label}
-                      </a>
+                      </Link>
                   ))}
                 </nav>
-                <motion.a
-                    href="/blog/post/insert"
-                    className="bg-sky-600 hover:bg-sky-700 text-white py-2 px-6 rounded-full font-medium flex items-center"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                  Get Started <ArrowRight className="ml-2" size={16} />
-                </motion.a>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                      href="/blog/post/insert"
+                      className="bg-sky-600 hover:bg-sky-700 text-white py-2 px-6 rounded-full font-medium flex items-center"
+                  >
+                    Get Started <ArrowRight className="ml-2" size={16} />
+                  </Link>
+                </motion.div>
               </div>
 
-              {/* Mobile Menu Button */}
               <motion.button
                   className="block md:hidden text-gray-700"
                   onClick={() => setIsMenuOpen(true)}
@@ -166,7 +164,6 @@ export default function Home() {
           </motion.div>
         </header>
 
-        {/* Sub-header that appears while scrolling */}
         <motion.div
             className="fixed top-16 left-0 right-0 z-30 bg-sky-600 text-white py-2 shadow-md"
             style={{ opacity: showSubHeader }}
@@ -176,27 +173,24 @@ export default function Home() {
               <Feather size={16} />
               <span className="text-sm font-medium">Discover the power of Penflare</span>
             </div>
-            <motion.a
-                href="/blog/post/insert"
-                className="text-xs bg-white text-sky-600 px-3 py-1 rounded-full font-medium"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-            >
-              Write Now
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                  href="/blog/post/insert"
+                  className="text-xs bg-white text-sky-600 px-3 py-1 rounded-full font-medium"
+              >
+                Write Now
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 
         <main className="pt-16">
-          {/* Hero Section */}
           <motion.section
               className="relative py-12 md:py-20 flex flex-col items-center min-h-[85vh] md:min-h-screen"
               style={{ y: heroY, opacity: heroOpacity }}
           >
-            {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-sky-50 to-white" />
 
-            {/* Hero content */}
             <div className="container mx-auto px-4 pt-12 md:pt-24 relative z-10">
               <motion.div
                   className="flex flex-col items-center text-center max-w-4xl mx-auto"
@@ -243,22 +237,22 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                  <motion.a
-                      href="/blog/posts"
-                      className="bg-sky-600 hover:bg-sky-700 text-white py-3 px-8 rounded-full font-medium flex items-center justify-center"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                  >
-                    Explore Blog
-                  </motion.a>
-                  <motion.a
-                      href="/blog/post/insert"
-                      className="border-2 border-sky-600 text-sky-600 hover:bg-sky-50 py-3 px-8 rounded-full font-medium flex items-center justify-center"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                  >
-                    Start Writing
-                  </motion.a>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link
+                        href="/blog/posts"
+                        className="bg-sky-600 hover:bg-sky-700 text-white py-3 px-8 rounded-full font-medium flex items-center justify-center"
+                    >
+                      Explore Blog
+                    </Link>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link
+                        href="/blog/post/insert"
+                        className="border-2 border-sky-600 text-sky-600 hover:bg-sky-50 py-3 px-8 rounded-full font-medium flex items-center justify-center"
+                    >
+                      Start Writing
+                    </Link>
+                  </motion.div>
                 </div>
 
                 <motion.button
@@ -278,7 +272,6 @@ export default function Home() {
             </div>
           </motion.section>
 
-          {/* Features Section */}
           <section id="features" className="py-16 md:py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4">
               <motion.div
@@ -294,7 +287,6 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              {/* Mobile Feature Carousel */}
               <div className="md:hidden">
                 <motion.div
                     className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-sky-50 to-white shadow-lg p-6 mb-8 h-64"
@@ -310,7 +302,6 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">{features[activeFeature].title}</h3>
                   <p className="text-gray-600">{features[activeFeature].description}</p>
 
-                  {/* Indicator dots */}
                   <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
                     {features.map((_, index) => (
                         <button
@@ -326,7 +317,6 @@ export default function Home() {
                 </motion.div>
               </div>
 
-              {/* Desktop Features Grid */}
               <motion.div
                   className="hidden md:grid grid-cols-3 gap-6"
                   initial="hidden"
@@ -352,7 +342,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Call to Action Section */}
           <section className="py-16 md:py-20 bg-gradient-to-b from-white to-sky-50">
             <div className="container mx-auto px-4">
               <motion.div
@@ -371,29 +360,28 @@ export default function Home() {
                       Join thousands of writers on Penflare and be part of a growing community.
                     </p>
                   </div>
-                  <motion.a
-                      href="/blog/post/insert"
-                      className="bg-white text-sky-700 hover:bg-sky-50 py-3 px-8 rounded-full font-medium whitespace-nowrap flex items-center justify-center"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                  >
-                    Start Writing Now <ArrowRight className="ml-2" size={18} />
-                  </motion.a>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link
+                        href="/blog/post/insert"
+                        className="bg-white text-sky-700 hover:bg-sky-50 py-3 px-8 rounded-full font-medium whitespace-nowrap flex items-center justify-center"
+                    >
+                      Start Writing Now <ArrowRight className="ml-2" size={18} />
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
           </section>
         </main>
 
-        {/* Optimized Footer */}
         <footer className="bg-gray-900 text-white py-8">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between gap-6 mb-6">
               <div className="md:w-1/3">
-                <a href="/" className="text-xl font-bold mb-2 flex items-center">
+                <Link href="/" className="text-xl font-bold mb-2 flex items-center">
                   <Feather className="text-sky-400 mr-2" size={20} />
                   <span>Penflare</span>
-                </a>
+                </Link>
                 <p className="text-gray-400 mb-3 text-sm">Your space to read, write, and share ideas that matter.</p>
                 <div className="flex space-x-4">
                   {['Twitter', 'Facebook', 'Instagram'].map((social, i) => (
@@ -410,11 +398,11 @@ export default function Home() {
               <div className="md:w-1/3">
                 <h3 className="text-lg font-semibold mb-3">Navigation</h3>
                 <div className="grid grid-cols-2 gap-2">
-                  <a href="/" className="text-gray-400 hover:text-white transition-colors">Home</a>
+                  <Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
                   {navItems.map((item, i) => (
-                      <a key={i} href={item.href} className="text-gray-400 hover:text-white transition-colors">
+                      <Link key={i} href={item.href} className="text-gray-400 hover:text-white transition-colors">
                         {item.label}
-                      </a>
+                      </Link>
                   ))}
                 </div>
               </div>

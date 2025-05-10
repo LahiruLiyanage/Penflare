@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Feather, Users, Globe, Calendar, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Feather, ArrowRight } from "lucide-react";
 
 export default function About() {
     // Animation variants
@@ -11,56 +10,7 @@ export default function About() {
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
     };
 
-    const staggerContainer = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 }
-        }
-    };
-
-    // Team members data
-    const teamMembers = [
-        {
-            name: "Alex Morgan",
-            role: "Founder & CEO",
-            bio: "Former editor with a passion for making writing accessible to everyone."
-        },
-        {
-            name: "Jamie Chen",
-            role: "Head of Design",
-            bio: "UX specialist focused on creating beautiful, intuitive interfaces."
-        },
-        {
-            name: "Sam Taylor",
-            role: "Content Director",
-            bio: "Award-winning writer helping creators tell their stories effectively."
-        }
-    ];
-
-    // Milestones data
-    const milestones = [
-        {
-            year: "2021",
-            title: "Penflare Founded",
-            description: "Started with a mission to create the most writer-friendly platform."
-        },
-        {
-            year: "2022",
-            title: "10,000 Writers",
-            description: "Reached our first major community milestone with global writers."
-        },
-        {
-            year: "2023",
-            title: "Mobile App Launch",
-            description: "Expanded our platform to iOS and Android devices."
-        },
-        {
-            year: "2024",
-            title: "New Editor 2.0",
-            description: "Released our revolutionary distraction-free writing experience."
-        }
-    ];
+    // Removed unused staggerContainer variable
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
@@ -83,7 +33,7 @@ export default function About() {
                         </h1>
 
                         <p className="text-lg text-gray-600 mb-8">
-                            We're building the most intuitive platform for writers and readers to connect through meaningful content.
+                            We&apos;re building the most intuitive platform for writers and readers to connect through meaningful content.
                             Our mission is to empower voices and ideas that deserve to be heard.
                         </p>
                     </motion.div>
@@ -156,14 +106,14 @@ export default function About() {
                                 <div>
                                     <h3 className="text-xl font-semibold text-sky-600 mb-2">Building Community</h3>
                                     <p className="text-gray-600">
-                                        Writing shouldn't be a solitary experience. Penflare connects creators with readers who appreciate their perspective, fostering meaningful dialogue and growth.
+                                        Writing shouldn&apos;t be a solitary experience. Penflare connects creators with readers who appreciate their perspective, fostering meaningful dialogue and growth.
                                     </p>
                                 </div>
 
                                 <div>
                                     <h3 className="text-xl font-semibold text-sky-600 mb-2">Accessible Excellence</h3>
                                     <p className="text-gray-600">
-                                        Great tools shouldn't be complicated. We strive to make professional publishing features accessible to everyone, regardless of technical expertise.
+                                        Great tools shouldn&apos;t be complicated. We strive to make professional publishing features accessible to everyone, regardless of technical expertise.
                                     </p>
                                 </div>
                             </div>

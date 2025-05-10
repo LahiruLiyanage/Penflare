@@ -68,7 +68,7 @@ export default function Contact() {
                         </h1>
 
                         <p className="text-lg text-gray-600 mb-8">
-                            Have questions or want to connect? We'd love to hear from you.
+                            Have questions or want to connect? We&apos;d love to hear from you.
                             Reach out using any of the methods below.
                         </p>
                     </motion.div>
@@ -211,7 +211,7 @@ export default function Contact() {
                     >
                         <div className="max-w-2xl mx-auto relative z-10">
                             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                                Let's work together
+                                Let&apos;s work together
                             </h2>
                             <p className="text-sky-100 mb-8">
                                 Looking for a collaboration opportunity? Connect with us today.
