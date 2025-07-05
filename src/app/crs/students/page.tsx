@@ -1,6 +1,6 @@
 import { Users, User, GraduationCap, Mail, Phone, Calendar, Plus } from 'lucide-react';
 import Link from 'next/link';
-import { getStudents } from '@/app/lib/crs-data-access';
+import { getStudents } from '@/app/lib/crs-data-access-mock';
 
 export default async function StudentsPage() {
   const students = await getStudents();

@@ -7,7 +7,7 @@ import {
   checkPrerequisites,
   getEnrollmentSummary,
   getCourseSummary 
-} from '@/app/lib/crs-data-access';
+} from '@/app/lib/crs-data-access-mock';
 
 export async function GET(request: Request) {
   try {

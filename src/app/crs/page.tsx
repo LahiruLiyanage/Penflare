@@ -1,6 +1,6 @@
 import { BookOpen, Users, GraduationCap, TrendingUp, Clock } from 'lucide-react';
 import Link from 'next/link';
-import { getEnrollmentSummary, getCourseSummary } from '@/app/lib/crs-data-access';
+import { getEnrollmentSummary, getCourseSummary } from '@/app/lib/crs-data-access-mock';
 
 export default async function CRSDashboard() {
   const enrollmentSummary = await getEnrollmentSummary();

@@ -1,6 +1,6 @@
 import { BookOpen, Users, Clock, MapPin, Plus } from 'lucide-react';
 import Link from 'next/link';
-import { getCourses } from '@/app/lib/crs-data-access';
+import { getCourses } from '@/app/lib/crs-data-access-mock';
 
 export default async function CoursesPage() {
   const courses = await getCourses();

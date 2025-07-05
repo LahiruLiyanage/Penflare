@@ -1,6 +1,6 @@
 import { GraduationCap, BookOpen, User, Calendar, CheckCircle, Clock, XCircle, Plus } from 'lucide-react';
 import Link from 'next/link';
-import { getEnrollments } from '@/app/lib/crs-data-access';
+import { getEnrollments } from '@/app/lib/crs-data-access-mock';
 
 export default async function EnrollmentsPage() {
   const enrollments = await getEnrollments();
