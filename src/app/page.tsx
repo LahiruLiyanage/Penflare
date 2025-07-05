@@ -41,6 +41,7 @@ export default function Home() {
 
   const navItems = [
     { href: "/blog/posts", label: "Blog" },
+    { href: "/crs", label: "CRS" },
     { href: "/blog/about", label: "About" },
     { href: "/blog/contact", label: "Contact" }
   ];
